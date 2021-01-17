@@ -15,6 +15,7 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->foreign('currency_id')->references('id')->on('currencies');
             $table->timestamps();
         });
     }
