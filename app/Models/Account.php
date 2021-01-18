@@ -16,6 +16,9 @@ class Account extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
+        'currency_id',
+        'user_id'
     ];
 
     public function currency()
