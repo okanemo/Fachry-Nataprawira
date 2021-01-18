@@ -27,7 +27,6 @@ class TestSeeder extends Seeder
     {
 
         // users
-
         $user_1 = User::create(array('name' => 'user',
             'email' => 'user'.'@gmail.com',
             'password' => Hash::make('password')
@@ -86,14 +85,31 @@ class TestSeeder extends Seeder
 
         // transactions
         Transaction::create(array(
-            'title' => 'Gaji pertama',
-            'message' => 'gaji pertamaku magang',
+            'description' => 'gaji pertamaku magang',
             'type' => 'income',
             'date' => Carbon\Carbon::now(),
             'amount' => 1000000,
             'account_id' => $account_1->id,
             'user_id' => $user_1->id,
             'sub_category_id' => $salary->id
+        ));
+        Transaction::create(array(
+            'description' => 'gaji keduaku magang',
+            'type' => 'income',
+            'date' => Carbon\Carbon::now(),
+            'amount' => 1000000,
+            'account_id' => $account_1->id,
+            'user_id' => $user_1->id,
+            'sub_category_id' => $salary->id
+        ));
+        Transaction::create(array(
+            'description' => 'makan bulanan',
+            'type' => 'expense',
+            'date' => Carbon\Carbon::now(),
+            'amount' => 100000,
+            'account_id' => $account_1->id,
+            'user_id' => $user_1->id,
+            'sub_category_id' => $meals->id
         ));
     }
 }
