@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group( ['middleware' => 'auth' ], function()
 {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::resource('transaction', App\Http\Controllers\TransactionController::class);
+    Route::resource('account', App\Http\Controllers\AccountController::class);
 });
 
 Auth::routes();
