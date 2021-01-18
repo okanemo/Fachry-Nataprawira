@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
+use App\Models\Account;
+
 class AccountController extends Controller
 {
     /**
@@ -34,7 +38,17 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $user = Auth::user();
+
+            Account::create(array(
+                'name' => $request->input('name'),
+                'currency_id' => $request->input('currency_id'),
+                'user_id' => $user->id,
+            ));
+
+            return redirect()->to('/');
+        } 
     }
 
     /**
